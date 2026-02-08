@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://bo6vdd0xnt2b"]
+
+[ext_resource type="Script" uid="uid://di2dwxp3q6wg6" path="res://entities/bouncer.gd" id="1_gd6gk"]
+[ext_resource type="Script" uid="uid://buxe167bt4e50" path="res://components/body.gd" id="2_cs8l5"]
+[ext_resource type="Script" uid="uid://jy0hhg0kuwrx" path="res://components/area.gd" id="2_gd6gk"]
+[ext_resource type="Texture2D" uid="uid://cp26e3r21e2wq" path="res://assets/sprites/bouncer.png" id="4_ovgss"]
+[ext_resource type="Script" uid="uid://du2n54mrt0q3b" path="res://components/sprite.gd" id="6_7ldxg"]
+[ext_resource type="Script" uid="uid://c606loxuq275k" path="res://components/animator.gd" id="7_4l74w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8heu8"]
+size = Vector2(16, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lgu6u"]
+size = Vector2(16, 14)
+
+[sub_resource type="Animation" id="Animation_ovgss"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_8heu8"]
+resource_name = "bounce"
+length = 0.3
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [1, 2, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cs8l5"]
+_data = {
+&"RESET": SubResource("Animation_ovgss"),
+&"bounce": SubResource("Animation_8heu8")
+}
+
+[node name="bouncer" type="Node2D" unique_id=1575845359]
+scale = Vector2(-1, 1)
+script = ExtResource("1_gd6gk")
+metadata/_custom_type_script = "uid://4wxsn08nn755"
+
+[node name="area" type="Area2D" parent="." unique_id=1536089541]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("2_gd6gk")
+metadata/_custom_type_script = "uid://jy0hhg0kuwrx"
+
+[node name="area_shape" type="CollisionShape2D" parent="area" unique_id=80059884]
+position = Vector2(0, -16)
+shape = SubResource("RectangleShape2D_8heu8")
+
+[node name="body" type="CharacterBody2D" parent="." unique_id=695718012]
+script = ExtResource("2_cs8l5")
+metadata/_custom_type_script = "uid://buxe167bt4e50"
+
+[node name="body_shape" type="CollisionShape2D" parent="body" unique_id=428945125]
+position = Vector2(0, -7)
+shape = SubResource("RectangleShape2D_lgu6u")
+
+[node name="sprite" type="Sprite2D" parent="." unique_id=34262081]
+position = Vector2(0, -8)
+texture = ExtResource("4_ovgss")
+hframes = 3
+script = ExtResource("6_7ldxg")
+metadata/_custom_type_script = "uid://du2n54mrt0q3b"
+
+[node name="animator" type="AnimationPlayer" parent="." unique_id=2111067815]
+libraries/ = SubResource("AnimationLibrary_cs8l5")
+script = ExtResource("7_4l74w")
+metadata/_custom_type_script = "uid://c606loxuq275k"

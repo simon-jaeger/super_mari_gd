@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://p6yvhgjo30ye"]
+
+[ext_resource type="Script" uid="uid://cw6b1pqx7t877" path="res://game.gd" id="1_e2o6t"]
+[ext_resource type="PackedScene" uid="uid://uah55hs2kj3x" path="res://ui/transition.tscn" id="3_fc0e3"]
+
+[node name="game" type="Node2D" unique_id=1318480671]
+script = ExtResource("1_e2o6t")
+metadata/_custom_type_script = "uid://cw6b1pqx7t877"
+
+[node name="transition" parent="." unique_id=1019963570 instance=ExtResource("3_fc0e3")]
+layer = 2

@@ -1,0 +1,18 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "godot",
+      "type": "shell",
+      // "command": "godot .",
+      // "command": "godot --verbose .",
+      "command": "godot --debug-collisions .",
+      // "command": "godot --debug-collisions ./game_02.tscn",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+    }
+  ]
+}
+

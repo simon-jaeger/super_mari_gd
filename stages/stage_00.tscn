@@ -1,0 +1,108 @@
+[gd_scene format=4 uid="uid://i2l4spa7if45"]
+
+[ext_resource type="Script" uid="uid://d236ohgakk65u" path="res://stages/stage_00.gd" id="1_ehwjm"]
+[ext_resource type="Texture2D" uid="uid://n6ojwotxqgvw" path="res://assets/backgrounds/sky.png" id="2_u5oyp"]
+[ext_resource type="Texture2D" uid="uid://cboomrk2u22rd" path="res://assets/backgrounds/hills.png" id="3_ybn8m"]
+[ext_resource type="TileSet" uid="uid://seapsuf8iexq" path="res://assets/tilesets/tileset.tres" id="4_ykvgs"]
+[ext_resource type="FontFile" uid="uid://cge8s7s1q0koc" path="res://assets/fonts/zero_cool.ttf" id="5_70fs8"]
+[ext_resource type="Script" uid="uid://c606loxuq275k" path="res://components/animator.gd" id="6_ehwjm"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_tquo4"]
+line_spacing = 0.0
+font = ExtResource("5_70fs8")
+font_size = 24
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_h0wln"]
+line_spacing = 0.0
+font = ExtResource("5_70fs8")
+font_size = 8
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_70fs8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("label_2:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_6fk68"]
+resource_name = "auto"
+length = 1.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("label_2:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mbkod"]
+_data = {
+&"RESET": SubResource("Animation_70fs8"),
+&"auto": SubResource("Animation_6fk68")
+}
+
+[node name="stage_00" type="Node2D" unique_id=1522808176]
+script = ExtResource("1_ehwjm")
+metadata/_custom_type_script = "uid://boj2g5ogp0ape"
+
+[node name="texture_rect" type="TextureRect" parent="." unique_id=2060423013]
+offset_top = -128.0
+offset_right = 320.0
+offset_bottom = 256.0
+texture = ExtResource("2_u5oyp")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="texture_rect_2" type="TextureRect" parent="." unique_id=1197927784]
+offset_right = 320.0
+offset_bottom = 256.0
+texture = ExtResource("3_ybn8m")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="tilemap" type="TileMapLayer" parent="." unique_id=1274998348]
+tile_map_data = PackedByteArray("AAAHAAsAAAABAAIAAAAHAAoAAAABAAAAAAAGAAsAAAABAAIAAAAGAAoAAAABAAAAAAAFAAsAAAABAAIAAAAFAAoAAAABAAAAAAAEAAsAAAABAAIAAAAEAAoAAAABAAAAAAADAAsAAAABAAIAAAADAAoAAAABAAAAAAACAAsAAAABAAIAAAACAAoAAAABAAAAAAAPAAsAAAABAAIAAAAPAAoAAAABAAAAAAAOAAsAAAABAAIAAAAOAAoAAAABAAAAAAANAAsAAAABAAIAAAANAAoAAAABAAAAAAAMAAsAAAABAAIAAAAMAAoAAAABAAAAAAALAAsAAAABAAIAAAALAAoAAAABAAAAAAAKAAsAAAABAAIAAAAKAAoAAAABAAAAAAAJAAsAAAABAAIAAAAJAAoAAAABAAAAAAAIAAsAAAABAAIAAAAIAAoAAAABAAAAAAATAAsAAAABAAIAAAATAAoAAAABAAAAAAASAAsAAAABAAIAAAASAAoAAAABAAAAAAARAAsAAAABAAIAAAARAAoAAAABAAAAAAAQAAsAAAABAAIAAAAQAAoAAAABAAAAAAD//wsAAAAAAAIAAAD//woAAAAAAAAAAAAUAAsAAAACAAIAAAAUAAoAAAACAAAAAAABAAoAAAABAAAAAAAAAAoAAAABAAAAAAABAAsAAAABAAIAAAAAAAsAAAABAAIAAAA=")
+tile_set = ExtResource("4_ykvgs")
+collision_visibility_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="label" type="Label" parent="." unique_id=877591685]
+offset_left = 64.0
+offset_top = 48.0
+offset_right = 256.0
+offset_bottom = 80.0
+text = "Super Mari"
+label_settings = SubResource("LabelSettings_tquo4")
+horizontal_alignment = 1
+
+[node name="label_2" type="Label" parent="." unique_id=581419547]
+offset_left = 64.0
+offset_top = 80.0
+offset_right = 256.0
+offset_bottom = 96.0
+text = "Press space"
+label_settings = SubResource("LabelSettings_h0wln")
+horizontal_alignment = 1
+
+[node name="animator" type="AnimationPlayer" parent="." unique_id=1269284326]
+libraries/ = SubResource("AnimationLibrary_mbkod")
+autoplay = &"auto"
+script = ExtResource("6_ehwjm")
+metadata/_custom_type_script = "uid://c606loxuq275k"

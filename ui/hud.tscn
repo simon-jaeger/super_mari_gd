@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://dk4smaksti1qc"]
+
+[ext_resource type="Script" uid="uid://s1rh6pam2gwt" path="res://ui/hud.gd" id="1_546lt"]
+[ext_resource type="Texture2D" uid="uid://c80fqxcq4isik" path="res://assets/sprites/coin.png" id="2_276te"]
+[ext_resource type="FontFile" uid="uid://cw0adtm7pj8m8" path="res://assets/fonts/numbers.png" id="3_546lt"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7ihmi"]
+font = ExtResource("3_546lt")
+font_size = 8
+
+[node name="hud" type="CanvasLayer" unique_id=1235302253]
+script = ExtResource("1_546lt")
+
+[node name="coins_sprite" type="Sprite2D" parent="." unique_id=1096783522]
+position = Vector2(292, 8)
+texture = ExtResource("2_276te")
+hframes = 10
+vframes = 2
+
+[node name="coins_label" type="Label" parent="." unique_id=1300204923]
+offset_left = 292.0
+offset_right = 316.0
+offset_bottom = 16.0
+text = "00"
+label_settings = SubResource("LabelSettings_7ihmi")
+horizontal_alignment = 2
+vertical_alignment = 1

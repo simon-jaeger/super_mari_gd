@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://ckbppet4h5ntt"]
+
+[ext_resource type="Script" uid="uid://dobmvkraucvqt" path="res://entities/lift.gd" id="1_8aja7"]
+[ext_resource type="Script" uid="uid://buxe167bt4e50" path="res://components/body.gd" id="3_bau3a"]
+[ext_resource type="Texture2D" uid="uid://b1wm7oefd26ll" path="res://assets/sprites/lift.png" id="3_uy04e"]
+[ext_resource type="Script" uid="uid://du2n54mrt0q3b" path="res://components/sprite.gd" id="5_23au8"]
+[ext_resource type="Script" uid="uid://c606loxuq275k" path="res://components/animator.gd" id="6_d420k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lgu6u"]
+size = Vector2(32, 8)
+
+[sub_resource type="Animation" id="Animation_ovgss"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_8aja7"]
+resource_name = "auto"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cs8l5"]
+_data = {
+&"RESET": SubResource("Animation_ovgss"),
+&"auto": SubResource("Animation_8aja7")
+}
+
+[node name="lift" type="Node2D" unique_id=1575845359]
+scale = Vector2(-1, 1)
+script = ExtResource("1_8aja7")
+metadata/_custom_type_script = "uid://4wxsn08nn755"
+
+[node name="body" type="CharacterBody2D" parent="." unique_id=695718012]
+collision_mask = 0
+script = ExtResource("3_bau3a")
+gravity = 0
+metadata/_custom_type_script = "uid://buxe167bt4e50"
+
+[node name="body_shape" type="CollisionShape2D" parent="body" unique_id=428945125]
+position = Vector2(0, -12)
+shape = SubResource("RectangleShape2D_lgu6u")
+one_way_collision = true
+
+[node name="sprite" type="Sprite2D" parent="." unique_id=34262081]
+position = Vector2(0, -8)
+texture = ExtResource("3_uy04e")
+hframes = 4
+script = ExtResource("5_23au8")
+metadata/_custom_type_script = "uid://du2n54mrt0q3b"
+
+[node name="animator" type="AnimationPlayer" parent="." unique_id=2111067815]
+libraries/ = SubResource("AnimationLibrary_cs8l5")
+autoplay = &"auto"
+script = ExtResource("6_d420k")
+metadata/_custom_type_script = "uid://c606loxuq275k"
