@@ -3,6 +3,8 @@
 a fun little platformer game made with godot.
 join mari the witch on her first big adventure!
 
+![screenshot](./screenshot.png)
+
 ## assets
 
 - https://grafxkid.itch.io/
