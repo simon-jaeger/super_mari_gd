@@ -8,7 +8,7 @@ static var transition: Transition
 static var coins: int
 
 func _ready():
-	add_child(preload("res://stages/stage_01.tscn").instantiate())
+	add_child(preload("res://stages/stage_02.tscn").instantiate())
 	coins = 0
 
 func _input(e: InputEvent):
